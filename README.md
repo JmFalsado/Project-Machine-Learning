@@ -1,6 +1,6 @@
 # Project-Machine-Learning
 
-main Branch
+* main Branch
 1. Falsado, John Marvin
 2. Francisco, Zarino Mathew
 
