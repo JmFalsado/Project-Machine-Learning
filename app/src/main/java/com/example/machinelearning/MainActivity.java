@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+
+import com.example.machinelearning.ml.Modelcarol;
 import com.example.machinelearning.ml.Modelfals;
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void classifyImage(Bitmap image){
         try {
-            Modelfals model = Modelfals.newInstance(getApplicationContext());
+            Modelcarol model = Modelcarol.newInstance(getApplicationContext());
 
             // Creates inputs for reference.
             TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 224, 224, 3}, DataType.FLOAT32);
@@ -75,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             inputFeature0.loadBuffer(byteBuffer);
 
             // Runs model inference and gets result.
-            Modelfals.Outputs outputs = model.process(inputFeature0);
+            Modelcarol.Outputs outputs = model.process(inputFeature0);
             TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
 
             float[] confidences = outputFeature0.getFloatArray();
@@ -88,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             }
-            String[] classes = {"Phone","Pen","Watch","Charger Brick"};
+            String[] classes = {"Wallet","Charger","Panyo","Earpods"};
             result.setText(classes[maxPos]);
 
 String s = "";
